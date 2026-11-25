@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "roxanne-yoga",
+    "site": "roxanne-healing",
     "public": "out",
     "cleanUrls": true,
     "trailingSlash": false,
