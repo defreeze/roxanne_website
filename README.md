@@ -1,6 +1,6 @@
 # Roxanne website
 
-A 4-page website (Home, Services, About, Contact) for a one-person business. The customer edits content in **TinaCMS** at `/admin`, and the site is hosted for free on **Firebase Hosting**.
+A 4-page website (Home, Offerings, About, Contact) for a yoga & energy-healing practice. The customer edits content in **TinaCMS** at `/admin`, and the site is hosted for free on **Firebase Hosting**.
 
 ## How it works
 
@@ -66,3 +66,7 @@ Until all secrets and the variable are set, the deploy workflow skips itself wit
 3. The live site updates within a couple of minutes.
 
 You can also click on any text in the preview to jump to its field.
+
+**Booking:** under *Site settings → Booking link*, paste a link to an online booking tool (e.g. Momoyoga or Calendly) and every "Book a session" button will go there. Leave it empty and the buttons go to the contact page.
+
+**Photos:** the site ships with soft abstract placeholder artwork. Replace it with real photos; tall (portrait) photos work best for the arch-shaped frames.

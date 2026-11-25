@@ -2,16 +2,21 @@
 
 /* `inline` so the font variables (set on <body> by next/font) resolve where they're used. */
 @theme inline {
-  --color-background: #faf8f5;
-  --color-surface: #f1ece5;
-  --color-foreground: #1f1b18;
-  --color-muted: #6b625b;
-  --color-line: #e2dad0;
-  --color-brand: #8f5a3f;
-  --color-brand-dark: #6f4430;
+  --color-background: #f8f5ef;
+  --color-sand: #efe7da;
+  --color-surface: #e8dece;
+  --color-foreground: #2e2c28;
+  --color-muted: #6b665d;
+  --color-line: #ddd2c1;
+  --color-sage: #7f8e74;
+  --color-sage-dark: #4f5d48;
+  --color-forest: #35402f;
+  --color-clay: #9a6648;
+  --color-clay-soft: #d39f80;
+  --color-cream: #f8f5ef;
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), Georgia, serif;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -23,51 +28,97 @@
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 300;
+  /* Cormorant defaults to old-style figures; lining numbers read better for prices, times and phone numbers. */
+  font-variant-numeric: lining-nums;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Styling for text written in the editor's rich-text fields. */
+::selection {
+  background: #d9e0d0;
+}
+
+/* Arch-shaped images, a calm signature shape used across the site. */
+.arch {
+  border-radius: 999px 999px 1.25rem 1.25rem;
+}
+
+/* Gentle fade-up on scroll. Only hides content when JS is running and motion is OK. */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    transition:
+      opacity 900ms ease,
+      transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .js [data-reveal]:not([data-shown]) {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+/* Text written in the editor's rich-text fields. */
 .rich-text {
   font-size: 1.0625rem;
-  line-height: 1.75;
+  line-height: 1.8;
 }
 .rich-text > * + * {
   margin-top: 1em;
 }
 .rich-text h2 {
-  font-family: var(--font-playfair), Georgia, serif;
-  font-size: 1.75rem;
-  line-height: 1.25;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 2rem;
+  line-height: 1.2;
   margin-top: 1.5em;
 }
 .rich-text h3 {
-  font-weight: 600;
-  font-size: 1.2rem;
+  font-weight: 500;
+  font-size: 1.15rem;
   margin-top: 1.25em;
 }
 .rich-text ul {
-  list-style: disc;
-  padding-left: 1.25em;
+  padding-left: 0;
+}
+.rich-text ul > li {
+  position: relative;
+  padding-left: 1.5em;
+}
+.rich-text ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0.2em;
+  top: 0.72em;
+  width: 0.4em;
+  height: 0.4em;
+  border-radius: 999px;
+  background: var(--color-sage);
 }
 .rich-text ol {
   list-style: decimal;
   padding-left: 1.25em;
 }
 .rich-text li + li {
-  margin-top: 0.25em;
+  margin-top: 0.35em;
 }
 .rich-text a {
-  color: var(--color-brand);
+  color: var(--color-sage-dark);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 .rich-text strong {
-  font-weight: 600;
+  font-weight: 500;
 }
 .rich-text blockquote {
-  border-left: 2px solid var(--color-line);
-  padding-left: 1em;
-  color: var(--color-muted);
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 1.4rem;
   font-style: italic;
+  color: var(--color-sage-dark);
+}
+
+/* FAQ accordion marker */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
 }

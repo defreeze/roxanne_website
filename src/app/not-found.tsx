@@ -1,11 +1,14 @@
-import { ButtonLink, Container } from "@/components/ui";
+import { ButtonLink, Container, Heading, Ornament } from "@/components/ui";
 
 export default function NotFound() {
   return (
     <Container className="pt-24 md:pt-32 text-center">
-      <p className="text-sm text-muted">404</p>
-      <h1 className="mt-2 font-serif text-4xl md:text-5xl tracking-tight">This page doesn&apos;t exist</h1>
-      <div className="mt-8">
+      <Ornament />
+      <Heading as="h1" className="mt-8">
+        This page couldn&apos;t be found
+      </Heading>
+      <p className="mt-5 text-lg text-muted">Take a breath, and let&apos;s find our way back.</p>
+      <div className="mt-10">
         <ButtonLink href="/">Back to home</ButtonLink>
       </div>
     </Container>

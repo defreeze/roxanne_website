@@ -1,13 +1,17 @@
 {
   "businessName": "Roxanne",
-  "description": "Personal, professional service. Placeholder text: replace this with a one-sentence description of the business.",
+  "tagline": "Yoga & Energy Healing",
+  "description": "Yoga classes, private sessions and energy healing in Groningen. A calm space to move, breathe and come back to yourself.",
+  "bookingUrl": "",
+  "bookingLabel": "Book a session",
   "email": "hello@example.com",
   "phone": "+31 6 00000000",
+  "whatsapp": "+31600000000",
   "instagram": "",
   "location": "Groningen",
   "nav": {
     "home": "Home",
-    "services": "Services",
+    "services": "Offerings",
     "about": "About",
     "contact": "Contact"
   }

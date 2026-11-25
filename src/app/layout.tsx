@@ -1,28 +1,29 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Cormorant_Garamond, Jost } from "next/font/google";
 import { SiteShell } from "@/components/SiteShell";
 import { getSettings } from "@/lib/tina";
 import "./globals.css";
 
-const inter = Inter({
+const jost = Jost({
   subsets: ["latin"],
-  variable: "--font-inter",
-  weight: ["300", "400", "500", "600"],
+  variable: "--font-jost",
+  weight: ["300", "400", "500"],
 });
 
-const playfair = Playfair_Display({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  variable: "--font-playfair",
-  weight: ["400", "500"],
+  variable: "--font-cormorant",
+  weight: ["300", "400", "500"],
   style: ["normal", "italic"],
 });
 
 export async function generateMetadata(): Promise<Metadata> {
   const { data } = await getSettings();
-  const name = data.settings.businessName;
+  const { businessName, tagline, description } = data.settings;
+  const name = tagline ? `${businessName} · ${tagline}` : businessName;
   return {
-    title: { default: name, template: `%s | ${name}` },
-    description: data.settings.description ?? undefined,
+    title: { default: name, template: `%s | ${businessName}` },
+    description: description ?? undefined,
   };
 }
 
@@ -30,8 +31,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const settings = await getSettings();
 
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Marks that JS runs, so scroll animations never hide content without it. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
+      <body className={`${jost.variable} ${cormorant.variable}`}>
         <SiteShell settings={settings}>{children}</SiteShell>
       </body>
     </html>

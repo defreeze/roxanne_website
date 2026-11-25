@@ -12,6 +12,15 @@ const singleton = (route: string) => ({
   router: () => route,
 });
 
+const ICONS = ["lotus", "sun", "moon", "leaf", "wave", "heart", "sparkle"];
+
+const eyebrow = (name = "eyebrow", label = "Small label above heading") => ({
+  type: "string" as const,
+  name,
+  label,
+  description: "Short, e.g. 'Welcome' or 'Offerings'",
+});
+
 export default defineConfig({
   branch,
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
@@ -37,6 +46,7 @@ export default defineConfig({
         ui: singleton("/"),
         fields: [
           { type: "string", name: "businessName", label: "Business name", required: true },
+          { type: "string", name: "tagline", label: "Tagline", description: "Shown under the name, e.g. 'Yoga & Energy Healing'" },
           {
             type: "string",
             name: "description",
@@ -44,8 +54,22 @@ export default defineConfig({
             description: "Shown in Google search results and when the site is shared.",
             ui: { component: "textarea" },
           },
+          {
+            type: "string",
+            name: "bookingUrl",
+            label: "Booking link",
+            description:
+              "Optional. Link to an online booking tool (e.g. Momoyoga, Calendly). If empty, 'Book' buttons go to the contact page.",
+          },
+          { type: "string", name: "bookingLabel", label: "Booking button text", description: "e.g. 'Book a session'" },
           { type: "string", name: "email", label: "Email address" },
           { type: "string", name: "phone", label: "Phone number", description: "e.g. +31 6 12345678" },
+          {
+            type: "string",
+            name: "whatsapp",
+            label: "WhatsApp number",
+            description: "Optional. International format, e.g. +31612345678",
+          },
           { type: "string", name: "instagram", label: "Instagram handle", description: "Without the @" },
           { type: "string", name: "location", label: "Location", description: "e.g. Groningen" },
           {
@@ -54,7 +78,7 @@ export default defineConfig({
             label: "Menu labels",
             fields: [
               { type: "string", name: "home", label: "Home" },
-              { type: "string", name: "services", label: "Services" },
+              { type: "string", name: "services", label: "Offerings" },
               { type: "string", name: "about", label: "About" },
               { type: "string", name: "contact", label: "Contact" },
             ],
@@ -69,25 +93,30 @@ export default defineConfig({
         match: { include: "home" },
         ui: singleton("/"),
         fields: [
+          eyebrow("heroEyebrow"),
           { type: "string", name: "heroTitle", label: "Headline", required: true },
           { type: "string", name: "heroText", label: "Text under headline", ui: { component: "textarea" } },
-          { type: "image", name: "heroImage", label: "Main photo" },
-          { type: "string", name: "ctaLabel", label: "Button text", description: "Button that links to the contact page" },
-          { type: "string", name: "introTitle", label: "Introduction heading" },
-          { type: "rich-text", name: "body", label: "Introduction text", isBody: true },
-          { type: "string", name: "servicesTitle", label: "Services section heading" },
-          { type: "string", name: "galleryTitle", label: "Gallery heading" },
+          { type: "image", name: "heroImage", label: "Main photo", description: "A portrait (tall) photo works best." },
           {
             type: "object",
-            name: "gallery",
-            label: "Gallery (examples of work)",
+            name: "highlights",
+            label: "Three pillars",
+            description: "Short points shown under the main photo. Three works best.",
             list: true,
-            ui: { itemProps: (item) => ({ label: item?.caption || "Photo" }) },
+            ui: { itemProps: (item) => ({ label: item?.title || "Pillar" }) },
             fields: [
-              { type: "image", name: "image", label: "Photo", required: true },
-              { type: "string", name: "caption", label: "Caption" },
+              { type: "string", name: "icon", label: "Icon", options: ICONS },
+              { type: "string", name: "title", label: "Title", required: true },
+              { type: "string", name: "text", label: "Text", ui: { component: "textarea" } },
             ],
           },
+          eyebrow("introEyebrow"),
+          { type: "string", name: "introTitle", label: "Introduction heading" },
+          { type: "image", name: "introImage", label: "Introduction photo" },
+          { type: "rich-text", name: "body", label: "Introduction text", isBody: true },
+          eyebrow("servicesEyebrow"),
+          { type: "string", name: "servicesTitle", label: "Offerings heading" },
+          { type: "string", name: "servicesText", label: "Offerings introduction", ui: { component: "textarea" } },
           { type: "string", name: "testimonialsTitle", label: "Reviews heading" },
           {
             type: "object",
@@ -100,29 +129,72 @@ export default defineConfig({
               { type: "string", name: "name", label: "Name" },
             ],
           },
+          { type: "string", name: "galleryTitle", label: "Gallery heading" },
+          {
+            type: "object",
+            name: "gallery",
+            label: "Gallery",
+            list: true,
+            ui: { itemProps: (item) => ({ label: item?.caption || "Photo" }) },
+            fields: [
+              { type: "image", name: "image", label: "Photo", required: true },
+              { type: "string", name: "caption", label: "Caption" },
+            ],
+          },
+          { type: "string", name: "closingTitle", label: "Closing heading" },
+          { type: "string", name: "closingText", label: "Closing text", ui: { component: "textarea" } },
         ],
       },
       {
         name: "servicesPage",
-        label: "Services page",
+        label: "Offerings page",
         path: "content/services-page",
         format: "md",
         match: { include: "services" },
         ui: singleton("/services"),
         fields: [
+          eyebrow(),
           { type: "string", name: "title", label: "Page heading", required: true },
           { type: "string", name: "intro", label: "Introduction", ui: { component: "textarea" } },
-          { type: "rich-text", name: "body", label: "Text below the services", isBody: true },
+          { type: "string", name: "scheduleTitle", label: "Schedule heading" },
+          { type: "string", name: "scheduleText", label: "Schedule note", ui: { component: "textarea" } },
+          {
+            type: "object",
+            name: "schedule",
+            label: "Weekly schedule",
+            list: true,
+            ui: { itemProps: (item) => ({ label: [item?.day, item?.time, item?.name].filter(Boolean).join(" · ") || "Class" }) },
+            fields: [
+              { type: "string", name: "day", label: "Day", required: true },
+              { type: "string", name: "time", label: "Time", description: "e.g. 19:00 – 20:15" },
+              { type: "string", name: "name", label: "Class", required: true },
+              { type: "string", name: "location", label: "Location" },
+            ],
+          },
+          { type: "string", name: "faqTitle", label: "FAQ heading" },
+          {
+            type: "object",
+            name: "faq",
+            label: "Frequently asked questions",
+            list: true,
+            ui: { itemProps: (item) => ({ label: item?.question || "Question" }) },
+            fields: [
+              { type: "string", name: "question", label: "Question", required: true },
+              { type: "string", name: "answer", label: "Answer", ui: { component: "textarea" } },
+            ],
+          },
+          { type: "rich-text", name: "body", label: "Practical notes (bottom of page)", isBody: true },
         ],
       },
       {
         name: "service",
-        label: "Services",
+        label: "Offerings",
         path: "content/services",
         format: "md",
         ui: { router: () => "/services" },
         fields: [
           { type: "string", name: "title", label: "Name", isTitle: true, required: true },
+          { type: "string", name: "icon", label: "Icon", options: ICONS },
           {
             type: "string",
             name: "summary",
@@ -133,17 +205,8 @@ export default defineConfig({
           { type: "string", name: "price", label: "Price", description: "e.g. €45 or from €60" },
           { type: "string", name: "duration", label: "Duration", description: "e.g. 60 minutes" },
           { type: "image", name: "image", label: "Photo" },
-          {
-            type: "number",
-            name: "order",
-            label: "Position",
-            description: "Lower numbers appear first.",
-          },
-          {
-            type: "boolean",
-            name: "featured",
-            label: "Show on home page",
-          },
+          { type: "number", name: "order", label: "Position", description: "Lower numbers appear first." },
+          { type: "boolean", name: "featured", label: "Show on home page" },
           { type: "rich-text", name: "body", label: "Full description", isBody: true },
         ],
       },
@@ -155,9 +218,14 @@ export default defineConfig({
         match: { include: "about" },
         ui: singleton("/about"),
         fields: [
+          eyebrow(),
           { type: "string", name: "title", label: "Page heading", required: true },
-          { type: "image", name: "image", label: "Photo" },
-          { type: "rich-text", name: "body", label: "Text", isBody: true },
+          { type: "image", name: "image", label: "Portrait photo" },
+          { type: "rich-text", name: "body", label: "Story", isBody: true },
+          { type: "string", name: "quote", label: "Personal quote", ui: { component: "textarea" } },
+          { type: "image", name: "secondImage", label: "Second photo" },
+          { type: "string", name: "qualificationsTitle", label: "Training heading" },
+          { type: "string", name: "qualifications", label: "Training & qualifications", list: true },
         ],
       },
       {
@@ -168,14 +236,10 @@ export default defineConfig({
         match: { include: "contact" },
         ui: singleton("/contact"),
         fields: [
+          eyebrow(),
           { type: "string", name: "title", label: "Page heading", required: true },
           { type: "string", name: "intro", label: "Introduction", ui: { component: "textarea" } },
-          {
-            type: "string",
-            name: "hours",
-            label: "Opening hours / availability",
-            ui: { component: "textarea" },
-          },
+          { type: "string", name: "hours", label: "Availability", ui: { component: "textarea" } },
           { type: "rich-text", name: "body", label: "Extra text", isBody: true },
         ],
       },
