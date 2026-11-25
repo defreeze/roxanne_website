@@ -6,12 +6,14 @@ import type { ServiceConnectionQuery, ServicesPageQuery } from "../../../tina/__
 import { sortServices, type TinaProps } from "@/lib/tina";
 import { BookButton, ButtonLink, Container, Eyebrow, Heading, Icon, Ornament, Photo, Reveal } from "@/components/ui";
 import { PageIntro } from "./PageIntro";
+import { useSite } from "@/components/site-context";
 
 export function ServicesView(props: {
   page: TinaProps<ServicesPageQuery>;
   services: TinaProps<ServiceConnectionQuery>;
 }) {
   const page = useTina(props.page).data.servicesPage;
+  const site = useSite();
   const services = sortServices(useTina(props.services).data.serviceConnection.edges);
   const schedule = (page.schedule ?? []).filter((c) => c?.name);
   const faq = (page.faq ?? []).filter((f) => f?.question);
@@ -83,11 +85,11 @@ export function ServicesView(props: {
       </Container>
 
       {/* Schedule */}
-      {schedule.length > 0 && (
-        <section id="schedule" className="mt-28 md:mt-40 bg-sand scroll-mt-20">
+      {(schedule.length > 0 || page.scheduleTitle) && (
+        <section id="agenda" className="mt-28 md:mt-40 bg-sand scroll-mt-20">
           <Container className="py-20 md:py-24">
             <Reveal className="text-center max-w-2xl mx-auto">
-              <Eyebrow>Schedule</Eyebrow>
+              <Eyebrow>Agenda</Eyebrow>
               {page.scheduleTitle && (
                 <Heading className="mt-5" field={tinaField(page, "scheduleTitle")}>
                   {page.scheduleTitle}
@@ -99,6 +101,14 @@ export function ServicesView(props: {
                 </p>
               )}
             </Reveal>
+            {schedule.length === 0 && (
+              <Reveal className="mt-10 text-center">
+                <ButtonLink href={site.bookingUrl || "/contact"}>
+                  {site.bookingUrl && /hipsy\./.test(site.bookingUrl) ? "Bekijk de agenda op Hipsy" : "Bekijk de agenda"}
+                </ButtonLink>
+              </Reveal>
+            )}
+            {schedule.length > 0 && (
             <Reveal className="mt-12 max-w-3xl mx-auto">
               <ul className="divide-y divide-line border-y border-line">
                 {schedule.map((c, i) => (
@@ -117,6 +127,7 @@ export function ServicesView(props: {
                 ))}
               </ul>
             </Reveal>
+            )}
           </Container>
         </section>
       )}
@@ -126,7 +137,7 @@ export function ServicesView(props: {
         <Container className="mt-24 md:mt-32">
           <div className="max-w-3xl mx-auto">
           <Reveal className="text-center">
-            <Eyebrow>FAQ</Eyebrow>
+            <Eyebrow>Vragen</Eyebrow>
             {page.faqTitle && (
               <Heading className="mt-5" field={tinaField(page, "faqTitle")}>
                 {page.faqTitle}
@@ -162,7 +173,7 @@ export function ServicesView(props: {
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <BookButton />
             <ButtonLink href="/contact" variant="secondary">
-              Ask a question
+              Stel een vraag
             </ButtonLink>
           </div>
         </Reveal>

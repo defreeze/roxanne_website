@@ -31,7 +31,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const settings = await getSettings();
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="nl" suppressHydrationWarning>
       <head>
         {/* Marks that JS runs, so scroll animations never hide content without it. */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />

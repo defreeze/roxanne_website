@@ -1,48 +1,43 @@
 ---
-eyebrow: Offerings
-title: Yoga, healing & rest
+eyebrow: Aanbod
+title: Energiewerk & healing
 intro: >-
-  Every offering is designed to help you feel more grounded, open and at ease.
-  Choose what speaks to you, or get in touch and we'll find the right fit
-  together.
-scheduleTitle: Weekly class schedule
-scheduleText: Drop in any week. Please book ahead, as spaces are limited to keep classes small and personal.
-schedule:
-  - day: Monday
-    time: 19:00 – 20:15
-    name: Vinyasa Flow
-    location: Studio Groningen
-  - day: Wednesday
-    time: 09:30 – 10:45
-    name: Gentle Hatha
-    location: Studio Groningen
-  - day: Thursday
-    time: 19:30 – 20:45
-    name: Yin Yoga & Reiki
-    location: Studio Groningen
-  - day: Saturday
-    time: 10:00 – 11:15
-    name: Slow Morning Flow
-    location: Studio Groningen
-faqTitle: Questions
+  Ik werk intuïtief en afgestemd op wat jij op dat moment nodig hebt. Kies de
+  sessie die je aanspreekt, of neem contact op voor een kennismaking.
+scheduleTitle: Agenda
+scheduleText: >-
+  Ik werk op afspraak. Bekijk de actuele data en tijden en boek direct via mijn
+  Hipsy-pagina.
+schedule: []
+faqTitle: Veelgestelde vragen
 faq:
-  - question: Do I need any yoga experience?
+  - question: Heb ik ervaring nodig met energiewerk?
     answer: >-
-      Not at all. Every class offers options for different levels, and I'll help
-      you adapt each pose to your body.
-  - question: What should I bring?
+      Nee. Iedereen is welkom, ook als je voor het eerst een energetische sessie
+      ervaart. Er valt niets te bereiken of te forceren.
+  - question: Hoe verloopt een energetische massage?
     answer: >-
-      Comfortable clothes and a bottle of water. Mats, blocks, bolsters and
-      blankets are available at the studio.
-  - question: What happens during an energy healing session?
+      We beginnen met een korte kennismaking en afstemming. Daarna volgen
+      oefeningen via het lichaam om energie in beweging te brengen, en een
+      massage waarin energiewerk, handoplegging, Lomi Lomi en kundalini-activatie
+      samenkomen. Meestal zacht, langzaam en overgavegericht.
+  - question: Wat is het verschil met Lichtkracht Healing?
     answer: >-
-      You lie fully clothed on a treatment table while I work with light touch or
-      just above the body. Most people experience deep relaxation, warmth or a
-      sense of calm. Energy healing complements but does not replace medical care.
-  - question: What is your cancellation policy?
+      Bij Lichtkracht Healing werk ik vooral in je energieveld, zonder fysieke
+      aanraking. De focus ligt op bewustzijn, levensenergie, loslaten en nieuwe
+      inzichten.
+  - question: Kan een healing ook op afstand?
     answer: >-
-      You can cancel or reschedule free of charge up to 24 hours before your
-      class or session.
+      Ja, Lichtkracht Healing is ook op afstand mogelijk, en zelfs voor dieren.
+      Neem contact op om de mogelijkheden te bespreken.
+  - question: Hoe boek ik een sessie?
+    answer: >-
+      Boeken en betalen gaat eenvoudig via mijn Hipsy-pagina. Twijfel je welke
+      sessie bij je past? Bel of app me gerust.
+  - question: Vervangt energiewerk medische zorg?
+    answer: >-
+      Nee. Energiewerk is een aanvulling op, en nooit een vervanging van,
+      reguliere medische of psychologische zorg.
 ---
 
-Prices include VAT. Class cards and gift vouchers are available on request.
+Alle sessies vinden plaats in Groningen, tenzij anders afgesproken. Op mijn Hipsy-pagina vind je altijd de actuele agenda.

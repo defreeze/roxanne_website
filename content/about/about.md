@@ -1,22 +1,22 @@
 ---
-eyebrow: About
-title: Hi, I'm Roxanne
-image: /uploads/art-portrait.svg
-quote: >-
-  I believe everyone deserves a place where they can slow down, feel safe and
-  simply be.
-secondImage: /uploads/art-gallery-2.svg
-qualificationsTitle: Training & background
+eyebrow: Over mij
+title: Hi, ik ben Roxanne Mireya
+image: /uploads/roxanne-portret.jpg
+quote: Liefdevol, intuïtief en zacht-krachtig.
+secondImage: /uploads/orakelkaart.jpg
+qualificationsTitle: Opleidingen
 qualifications:
-  - 200-hour Yoga Teacher Training
-  - Yin Yoga Teacher Training
-  - Reiki practitioner (Level II)
-  - Trauma-informed yoga course
-  - Member of a professional yoga association
+  - Energetische Methodes
+  - Lomi Lomi Massage
+  - Soul Body Fusion
+  - EFT (Emotional Freedom Techniques)
+  - Kruidengeneeskunde & natuurgeneeskunde
 ---
 
-Yoga found me during a busy, stressful period of my life. What started as a way to unwind became a practice that slowly changed how I live, breathe and care for myself.
+Mijn naam Mireya betekent "stralend licht". Ik ben 30 jaar, woon in Groningen en deel hier mijn lichtwerk. Ik ben gepassioneerd door de magie van het leven, bewustzijn, de natuur en vrijheid, en ik vind het prachtig om anderen te inspireren.
 
-After years of practice and study, I began teaching yoga and later trained in energy healing. Today I combine both to help people reconnect with their bodies and find more calm, clarity and balance in everyday life.
+Ik voel een sterke verbinding met de natuur en haar cycli. Je vindt me dan ook vaak buiten, wandelend en genietend.
 
-My classes are gentle, unhurried and welcoming to every body. Whether you come for movement, rest or healing, I'll meet you exactly where you are.
+Het Pad Van Puurheid is ontstaan uit mijn eigen ontwikkeling: laag voor laag afpellen en herinneren wie je werkelijk bent. Van wonden naar wijsheid, van overleven naar volledig leven.
+
+Als holistisch therapeut zie ik mezelf als een wegwijzer. Ik begeleid je liefdevol op jouw eigen pad, in jouw tempo.

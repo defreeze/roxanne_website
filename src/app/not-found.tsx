@@ -5,11 +5,11 @@ export default function NotFound() {
     <Container className="pt-24 md:pt-32 text-center">
       <Ornament />
       <Heading as="h1" className="mt-8">
-        This page couldn&apos;t be found
+        Deze pagina bestaat niet
       </Heading>
-      <p className="mt-5 text-lg text-muted">Take a breath, and let&apos;s find our way back.</p>
+      <p className="mt-5 text-lg text-muted">Adem even in, en laten we de weg terug vinden.</p>
       <div className="mt-10">
-        <ButtonLink href="/">Back to home</ButtonLink>
+        <ButtonLink href="/">Terug naar home</ButtonLink>
       </div>
     </Container>
   );

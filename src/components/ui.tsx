@@ -114,7 +114,7 @@ export function BookButton({ variant = "primary", label }: { variant?: "primary"
   const s = useSite();
   return (
     <ButtonLink href={bookingHref(s)} variant={variant}>
-      {label || s.bookingLabel || "Book a session"}
+      {label || s.bookingLabel || "Boek een sessie"}
     </ButtonLink>
   );
 }

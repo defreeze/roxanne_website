@@ -1,13 +1,12 @@
 ---
 eyebrow: Contact
-title: Let's connect
+title: Neem contact op
 intro: >-
-  Have a question, want to book a session or not sure which offering suits you?
-  Send me a message and I'll get back to you within one or two days.
+  Heb je een vraag, wil je een sessie boeken of eerst kennismaken? Bel of stuur
+  me een bericht. Een kennismakingsgesprek kan telefonisch of in mijn praktijk.
 hours: |-
-  Monday to Friday, 9:00 – 20:00
-  Saturday, 9:00 – 13:00
-  Sunday closed
+  Sessies op afspraak
+  Actuele data en tijden op Hipsy
 ---
 
-Prefer to talk first? I'm happy to arrange a free 15-minute call to answer your questions.
+Je kunt ook direct een sessie boeken via mijn Hipsy-pagina.

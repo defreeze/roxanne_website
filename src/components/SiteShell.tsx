@@ -32,8 +32,8 @@ export function SiteShell({
 
   const links = [
     { href: "/", label: s.nav?.home || "Home", field: "home" },
-    { href: "/services", label: s.nav?.services || "Offerings", field: "services" },
-    { href: "/about", label: s.nav?.about || "About", field: "about" },
+    { href: "/services", label: s.nav?.services || "Aanbod", field: "services" },
+    { href: "/about", label: s.nav?.about || "Over mij", field: "about" },
     { href: "/contact", label: s.nav?.contact || "Contact", field: "contact" },
   ] as const;
 
@@ -91,14 +91,14 @@ export function SiteShell({
                 className="rounded-full bg-forest px-5 py-2.5 text-[12px] uppercase tracking-[0.16em] text-cream hover:bg-sage-dark transition-colors"
                 data-tina-field={tinaField(s, "bookingLabel")}
               >
-                {s.bookingLabel || "Book a session"}
+                {s.bookingLabel || "Boek een sessie"}
               </Link>
             </nav>
 
             <button
               type="button"
               className="md:hidden -mr-2 p-2 text-foreground"
-              aria-label={open ? "Close menu" : "Open menu"}
+              aria-label={open ? "Menu sluiten" : "Menu openen"}
               aria-expanded={open}
               onClick={() => setOpen((o) => !o)}
             >
@@ -126,7 +126,7 @@ export function SiteShell({
                 rel={bookExternal ? "noopener noreferrer" : undefined}
                 className="mt-6 inline-flex rounded-full bg-forest px-7 py-3.5 text-[13px] uppercase tracking-[0.16em] text-cream"
               >
-                {s.bookingLabel || "Book a session"}
+                {s.bookingLabel || "Boek een sessie"}
               </Link>
             </nav>
           )}
@@ -146,7 +146,7 @@ export function SiteShell({
             </div>
 
             <div>
-              <p className="text-[11px] uppercase tracking-[0.28em] text-cream/50 mb-4">Explore</p>
+              <p className="text-[11px] uppercase tracking-[0.28em] text-cream/50 mb-4">Menu</p>
               <ul className="space-y-2">
                 {links.map((l) => (
                   <li key={l.href}>
@@ -182,6 +182,13 @@ export function SiteShell({
                     </a>
                   </li>
                 )}
+                {s.bookingUrl && /^https?:/.test(s.bookingUrl) && (
+                  <li>
+                    <a className="hover:text-cream transition-colors" href={s.bookingUrl} target="_blank" rel="noopener noreferrer">
+                      {/hipsy\./.test(s.bookingUrl) ? "Boeken via Hipsy" : "Online boeken"}
+                    </a>
+                  </li>
+                )}
                 {instagram && (
                   <li>
                     <a className="hover:text-cream transition-colors" href={`https://instagram.com/${instagram}`} target="_blank" rel="noopener noreferrer">
@@ -198,7 +205,7 @@ export function SiteShell({
               © {new Date().getFullYear()} {s.businessName}
             </span>
             <a href="https://www.alexdevri.es" target="_blank" rel="noopener noreferrer" className="hover:text-cream/80">
-              Website by de Vries
+              Website door de Vries
             </a>
           </div>
         </footer>

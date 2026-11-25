@@ -1,56 +1,51 @@
 ---
-heroEyebrow: Yoga & Energy Healing in Groningen
-heroTitle: Come home to your body, breath and energy
+heroEyebrow: Energiewerk in Groningen
+heroTitle: Herinner wie je werkelijk bent
 heroText: >-
-  Gentle yoga classes, private sessions and energy healing for anyone who
-  wants to slow down, feel grounded and restore their natural balance.
-heroImage: /uploads/art-hero.svg
+  Intuïtieve energetische massages en healings die je helpen loslaten,
+  ontspannen en opnieuw verbinden met je innerlijke licht.
+heroImage: /uploads/roxanne-portret.jpg
 highlights:
   - icon: wave
-    title: Move
-    text: Mindful yoga that meets you where you are, whether you're brand new or have practised for years.
+    title: Loslaten
+    text: Energie in beweging brengen en blokkades zacht laten oplossen, in je lichaam en in je energieveld.
   - icon: leaf
-    title: Breathe
-    text: Breathwork and meditation to calm a busy mind and help your nervous system settle.
+    title: Ontspannen
+    text: Een warme, veilige ruimte met muziek, kaarsen en geuren waarin je je helemaal mag overgeven.
   - icon: sparkle
-    title: Restore
-    text: Hands-on energy healing to release tension and leave you feeling light, clear and whole.
-introEyebrow: Welcome
-introTitle: A calm space to reconnect
-introImage: /uploads/art-portrait.svg
-servicesEyebrow: Offerings
-servicesTitle: Ways to work with me
+    title: Herinneren
+    text: Weer in contact komen met je innerlijke licht. Van wonden naar wijsheid, van overleven naar volledig leven.
+introEyebrow: Welkom
+introTitle: Hi, ik ben Roxanne Mireya
+introImage: /uploads/kaarten-amethist.jpg
+servicesEyebrow: Aanbod
+servicesTitle: Sessies
 servicesText: >-
-  Join a group class, book one-to-one time, or combine yoga and energy work in a
-  session made just for you.
-testimonialsTitle: Kind words
-testimonials:
-  - quote: >-
-      Roxanne's classes are the calmest hour of my week. I always leave feeling
-      lighter and more like myself.
-    name: Saskia
-  - quote: >-
-      I was sceptical about energy healing, but the session was deeply relaxing.
-      I slept better than I had in months.
-    name: Mark
-  - quote: >-
-      Warm, attentive and never rushed. The private sessions helped me build a
-      practice I can actually keep up at home.
-    name: Leonie
-galleryTitle: Moments from the studio
+  Elke sessie is uniek en wordt geleid door intuïtie. Je hoeft niets te
+  bereiken of te forceren. Je mag gewoon zijn.
+testimonialsTitle: Ervaringen
+testimonials: []
+reviewsNote: Beoordeeld met 5,0 uit 10 reviews op Hipsy
+galleryTitle: Sfeerimpressie
 gallery:
-  - image: /uploads/art-gallery-1.svg
-    caption: Morning flow
-  - image: /uploads/art-gallery-2.svg
-    caption: Yin & sound
-  - image: /uploads/art-gallery-3.svg
-    caption: Outdoor practice
-closingTitle: Ready to begin?
+  - image: /uploads/feelers-and-healers.jpg
+    caption: ''
+  - image: /uploads/heart-is-the-door.jpg
+    caption: ''
+  - image: /uploads/sacred-space.jpg
+    caption: ''
+  - image: /uploads/lotus-kaars-goud.jpg
+    caption: ''
+  - image: /uploads/kristallen.jpg
+    caption: ''
+  - image: /uploads/love-is-the-answer.jpg
+    caption: ''
+closingTitle: Klaar voor de volgende stap op je pad?
 closingText: >-
-  Whether you'd like to join a class or book a one-to-one session, I'd love to
-  welcome you. Not sure where to start? Just send me a message.
+  Boek direct een sessie, of plan eerst een vrijblijvend kennismakingsgesprek,
+  telefonisch of in mijn praktijk. Love & Light, Roxanne
 ---
 
-I'm Roxanne, a yoga teacher and energy healer based in Groningen. My classes and sessions are an invitation to slow down, listen inward and give yourself the care you deserve.
+Mijn naam Mireya betekent "stralend licht", en dat licht deel ik graag met jou. Ik woon in Groningen en ben gepassioneerd door de magie van het leven, bewustzijn, de natuur en vrijheid.
 
-There's nothing to achieve and no need to be flexible. Every practice is adapted to your body, your energy and how you feel that day.
+Dit pad is ontstaan uit mijn eigen ontwikkeling: laag voor laag afpellen en herinneren wie je werkelijk bent. Als holistisch therapeut ben ik een wegwijzer die je liefdevol begeleidt op jouw eigen pad.

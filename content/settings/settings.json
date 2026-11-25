@@ -1,18 +1,18 @@
 {
-  "businessName": "Roxanne",
-  "tagline": "Yoga & Energy Healing",
-  "description": "Yoga classes, private sessions and energy healing in Groningen. A calm space to move, breathe and come back to yourself.",
-  "bookingUrl": "",
-  "bookingLabel": "Book a session",
-  "email": "hello@example.com",
-  "phone": "+31 6 00000000",
-  "whatsapp": "+31600000000",
+  "businessName": "Het Pad Van Puurheid",
+  "tagline": "Energiewerk · Roxanne Mireya",
+  "description": "Intuïtieve energetische massages en healings in Groningen. Liefdevol, intuïtief en zacht-krachtig: van overleven naar volledig leven.",
+  "bookingUrl": "https://hipsy.nl/hetpadvanpuurheid",
+  "bookingLabel": "Boek een sessie",
+  "email": "",
+  "phone": "+31 6 17028928",
+  "whatsapp": "",
   "instagram": "",
   "location": "Groningen",
   "nav": {
     "home": "Home",
-    "services": "Offerings",
-    "about": "About",
+    "services": "Aanbod",
+    "about": "Over mij",
     "contact": "Contact"
   }
 }

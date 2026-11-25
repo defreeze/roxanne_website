@@ -26,6 +26,12 @@ const ICONS: Record<string, React.ReactNode> = {
       <circle cx="16.8" cy="7.2" r=".6" fill="currentColor" />
     </>
   ),
+  booking: (
+    <>
+      <rect x="4" y="5.5" width="16" height="14" rx="2" />
+      <path d="M4 10h16M8.5 3.5v4M15.5 3.5v4M9.5 14.5l2 2l3.5-3.5" />
+    </>
+  ),
   location: (
     <>
       <path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z" />
@@ -40,10 +46,10 @@ export function ContactView(props: { page: TinaProps<ContactQuery> }) {
   const instagram = s.instagram?.replace(/^@/, "");
 
   const methods = [
-    s.email && { key: "email", label: "Email", value: s.email, href: `mailto:${s.email}`, field: tinaField(s, "email") },
+    s.email && { key: "email", label: "E-mail", value: s.email, href: `mailto:${s.email}`, field: tinaField(s, "email") },
     s.phone && {
       key: "phone",
-      label: "Phone",
+      label: "Telefoon",
       value: s.phone,
       href: `tel:${s.phone.replace(/[^\d+]/g, "")}`,
       field: tinaField(s, "phone"),
@@ -51,7 +57,7 @@ export function ContactView(props: { page: TinaProps<ContactQuery> }) {
     s.whatsapp && {
       key: "whatsapp",
       label: "WhatsApp",
-      value: "Send a message",
+      value: "Stuur een bericht",
       href: whatsappHref(s.whatsapp),
       field: tinaField(s, "whatsapp"),
     },
@@ -62,7 +68,15 @@ export function ContactView(props: { page: TinaProps<ContactQuery> }) {
       href: `https://instagram.com/${instagram}`,
       field: tinaField(s, "instagram"),
     },
-    s.location && { key: "location", label: "Location", value: s.location, href: "", field: tinaField(s, "location") },
+    s.bookingUrl &&
+      /^https?:/.test(s.bookingUrl) && {
+        key: "booking",
+        label: "Online boeken",
+        value: /hipsy\./.test(s.bookingUrl) ? "Via Hipsy" : "Boekingspagina",
+        href: s.bookingUrl,
+        field: tinaField(s, "bookingUrl"),
+      },
+    s.location && { key: "location", label: "Plaats", value: s.location, href: "", field: tinaField(s, "location") },
   ].filter(Boolean) as { key: string; label: string; value: string; href: string; field: string }[];
 
   return (
@@ -113,7 +127,7 @@ export function ContactView(props: { page: TinaProps<ContactQuery> }) {
 
         <Reveal delay={100} className="rounded-[1.5rem] bg-sage-dark text-cream p-8 md:p-10 relative overflow-hidden">
           <Icon name="lotus" className="absolute -right-6 -bottom-6 w-40 h-40 text-cream/[0.06]" />
-          <p className="text-[11px] uppercase tracking-[0.24em] text-cream/60">Availability</p>
+          <p className="text-[11px] uppercase tracking-[0.24em] text-cream/60">Beschikbaarheid</p>
           {page.hours && (
             <p className="mt-4 whitespace-pre-line font-serif text-2xl leading-relaxed" data-tina-field={tinaField(page, "hours")}>
               {page.hours}

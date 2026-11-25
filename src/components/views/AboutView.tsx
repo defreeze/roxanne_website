@@ -50,7 +50,7 @@ export function AboutView(props: { page: TinaProps<AboutQuery> }) {
       {qualifications.length > 0 && (
         <Container className="mt-24 md:mt-32 grid gap-12 md:gap-20 md:grid-cols-[1.2fr_1fr] md:items-center">
           <Reveal>
-            <Eyebrow>Experience</Eyebrow>
+            <Eyebrow>Achtergrond</Eyebrow>
             {page.qualificationsTitle && (
               <Heading className="mt-5" field={tinaField(page, "qualificationsTitle")}>
                 {page.qualificationsTitle}
@@ -67,7 +67,7 @@ export function AboutView(props: { page: TinaProps<AboutQuery> }) {
             <div className="mt-10 flex flex-wrap gap-3">
               <BookButton />
               <ButtonLink href="/services" variant="secondary">
-                View offerings
+                Bekijk het aanbod
               </ButtonLink>
             </div>
           </Reveal>

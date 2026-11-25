@@ -5,6 +5,7 @@ import { tinaField, useTina } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import type { HomeQuery, ServiceConnectionQuery } from "../../../tina/__generated__/types";
 import { sortServices, type TinaProps } from "@/lib/tina";
+import { useSite } from "@/components/site-context";
 import { BookButton, ButtonLink, Container, Eyebrow, Heading, Icon, Ornament, Photo, Reveal } from "@/components/ui";
 
 export function HomeView(props: {
@@ -12,6 +13,7 @@ export function HomeView(props: {
   services: TinaProps<ServiceConnectionQuery>;
 }) {
   const home = useTina(props.home).data.home;
+  const site = useSite();
   const services = sortServices(useTina(props.services).data.serviceConnection.edges).filter((s) => s.featured);
   const highlights = (home.highlights ?? []).filter((h) => h?.title);
   const gallery = (home.gallery ?? []).filter((g) => g?.image);
@@ -35,7 +37,7 @@ export function HomeView(props: {
             <div className="mt-10 flex flex-wrap gap-3">
               <BookButton />
               <ButtonLink href="/services" variant="secondary">
-                {home.servicesTitle ? "Explore offerings" : "Offerings"}
+                Bekijk het aanbod
               </ButtonLink>
             </div>
           </Reveal>
@@ -98,7 +100,7 @@ export function HomeView(props: {
             href="/about"
             className="mt-8 inline-flex items-center gap-2 text-[13px] uppercase tracking-[0.16em] text-sage-dark border-b border-sage-dark/40 pb-1 hover:border-sage-dark"
           >
-            More about me <span aria-hidden>→</span>
+            Meer over mij <span aria-hidden>→</span>
           </Link>
         </Reveal>
       </Container>
@@ -151,7 +153,7 @@ export function HomeView(props: {
             </div>
             <div className="mt-14 text-center">
               <ButtonLink href="/services" variant="secondary">
-                All offerings & schedule
+                Bekijk alle sessies
               </ButtonLink>
             </div>
           </Container>
@@ -159,7 +161,7 @@ export function HomeView(props: {
       )}
 
       {/* Testimonials */}
-      {testimonials.length > 0 && (
+      {(testimonials.length > 0 || home.reviewsNote) && (
         <section className="mt-24 md:mt-36 bg-sage-dark text-cream">
           <Container className="py-20 md:py-28">
             <Reveal className="text-center">
@@ -170,6 +172,7 @@ export function HomeView(props: {
                 </h2>
               )}
             </Reveal>
+            {testimonials.length > 0 && (
             <div className={`mt-14 grid gap-12 ${testimonials.length > 1 ? "md:grid-cols-3" : "max-w-2xl mx-auto"}`}>
               {testimonials.map((t, i) => (
                 <Reveal as="figure" key={i} delay={i * 120} className="text-center" data-tina-field={tinaField(t!)}>
@@ -180,6 +183,24 @@ export function HomeView(props: {
                 </Reveal>
               ))}
             </div>
+            )}
+            {home.reviewsNote && (
+              <Reveal className="mt-10 text-center">
+                <a
+                  href={site.bookingUrl || "/contact"}
+                  target={site.bookingUrl ? "_blank" : undefined}
+                  rel={site.bookingUrl ? "noopener noreferrer" : undefined}
+                  className="inline-flex flex-col items-center gap-3 group"
+                  data-tina-field={tinaField(home, "reviewsNote")}
+                >
+                  <span className="text-clay-soft text-2xl tracking-[0.3em]" aria-hidden>★★★★★</span>
+                  <span className="font-serif italic text-2xl md:text-3xl text-cream/95">{home.reviewsNote}</span>
+                  <span className="text-[12px] uppercase tracking-[0.2em] text-cream/60 group-hover:text-cream transition-colors">
+                    Lees de ervaringen →
+                  </span>
+                </a>
+              </Reveal>
+            )}
           </Container>
         </section>
       )}
@@ -200,10 +221,9 @@ export function HomeView(props: {
                 as="figure"
                 key={i}
                 delay={i * 100}
-                className={i === 0 ? "col-span-2 md:col-span-1" : ""}
                 data-tina-field={tinaField(g!)}
               >
-                <Photo src={g!.image} alt={g!.caption || ""} className="w-full aspect-[4/3] md:aspect-[4/5] rounded-[1.25rem]" />
+                <Photo src={g!.image} alt={g!.caption || ""} className="w-full aspect-square rounded-[1.25rem]" />
                 {g!.caption && (
                   <figcaption className="mt-3 text-center font-serif italic text-lg text-muted">{g!.caption}</figcaption>
                 )}
@@ -235,7 +255,7 @@ export function HomeView(props: {
             <div className="mt-10 flex flex-wrap justify-center gap-3">
               <BookButton />
               <ButtonLink href="/contact" variant="secondary">
-                Ask a question
+                Stel een vraag
               </ButtonLink>
             </div>
           </div>
