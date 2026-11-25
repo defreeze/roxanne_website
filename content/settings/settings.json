@@ -1,0 +1,14 @@
+{
+  "businessName": "Roxanne",
+  "description": "Personal, professional service. Placeholder text: replace this with a one-sentence description of the business.",
+  "email": "hello@example.com",
+  "phone": "+31 6 00000000",
+  "instagram": "",
+  "location": "Groningen",
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact"
+  }
+}

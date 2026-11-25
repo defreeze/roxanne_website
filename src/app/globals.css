@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+/* `inline` so the font variables (set on <body> by next/font) resolve where they're used. */
+@theme inline {
+  --color-background: #faf8f5;
+  --color-surface: #f1ece5;
+  --color-foreground: #1f1b18;
+  --color-muted: #6b625b;
+  --color-line: #e2dad0;
+  --color-brand: #8f5a3f;
+  --color-brand-dark: #6f4430;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Styling for text written in the editor's rich-text fields. */
+.rich-text {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+.rich-text > * + * {
+  margin-top: 1em;
+}
+.rich-text h2 {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  margin-top: 1.5em;
+}
+.rich-text h3 {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-top: 1.25em;
+}
+.rich-text ul {
+  list-style: disc;
+  padding-left: 1.25em;
+}
+.rich-text ol {
+  list-style: decimal;
+  padding-left: 1.25em;
+}
+.rich-text li + li {
+  margin-top: 0.25em;
+}
+.rich-text a {
+  color: var(--color-brand);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.rich-text strong {
+  font-weight: 600;
+}
+.rich-text blockquote {
+  border-left: 2px solid var(--color-line);
+  padding-left: 1em;
+  color: var(--color-muted);
+  font-style: italic;
+}

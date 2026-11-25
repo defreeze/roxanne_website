@@ -1,0 +1,58 @@
+# Builds the static site and deploys it to Firebase Hosting.
+# Runs on every push to main, which includes every save the customer makes in TinaCMS.
+name: Deploy to Firebase Hosting
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check that deploy secrets are configured
+        id: check
+        env:
+          TINA_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_TINA_CLIENT_ID }}
+          TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
+          FIREBASE_SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          PROJECT_ID: ${{ vars.FIREBASE_PROJECT_ID }}
+        run: |
+          if [ -z "$TINA_CLIENT_ID" ] || [ -z "$TINA_TOKEN" ] || [ -z "$FIREBASE_SA" ] || [ -z "$PROJECT_ID" ]; then
+            echo "::notice::Skipping deploy: set NEXT_PUBLIC_TINA_CLIENT_ID, TINA_TOKEN, FIREBASE_SERVICE_ACCOUNT secrets and FIREBASE_PROJECT_ID variable (see README)."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.check.outputs.ready == 'true'
+
+      - uses: actions/setup-node@v4
+        if: steps.check.outputs.ready == 'true'
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+        if: steps.check.outputs.ready == 'true'
+
+      - run: npm run build
+        if: steps.check.outputs.ready == 'true'
+        env:
+          NEXT_PUBLIC_TINA_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_TINA_CLIENT_ID }}
+          TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
+          NEXT_PUBLIC_TINA_BRANCH: main
+
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        if: steps.check.outputs.ready == 'true'
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: ${{ vars.FIREBASE_PROJECT_ID }}
+          channelId: live
