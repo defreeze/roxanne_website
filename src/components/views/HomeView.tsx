@@ -18,6 +18,12 @@ export function HomeView(props: {
   const highlights = (home.highlights ?? []).filter((h) => h?.title);
   const gallery = (home.gallery ?? []).filter((g) => g?.image);
   const testimonials = (home.testimonials ?? []).filter((t) => t?.quote);
+  // Hipsy pages have a reviews section; link straight to it.
+  const reviewsHref = site.bookingUrl
+    ? /hipsy\./.test(site.bookingUrl)
+      ? `${site.bookingUrl.split("#")[0]}#reviews`
+      : site.bookingUrl
+    : "/contact";
 
   return (
     <>
@@ -187,7 +193,7 @@ export function HomeView(props: {
             {home.reviewsNote && (
               <Reveal className="mt-10 text-center">
                 <a
-                  href={site.bookingUrl || "/contact"}
+                  href={reviewsHref}
                   target={site.bookingUrl ? "_blank" : undefined}
                   rel={site.bookingUrl ? "noopener noreferrer" : undefined}
                   className="inline-flex flex-col items-center gap-3 group"
